@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t mzaghi/docker-react-pipeline -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mzaghi/docker-react-pipeline npm run test
